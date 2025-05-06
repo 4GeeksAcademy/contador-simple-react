@@ -24,9 +24,9 @@ const Home = () => {
   const cienMillares = Math.floor((time / 100000) % 10);
 
   return (
-    <div className="container">
-      <div className="row gx-5">
-	  	<Contador unidad={<FontAwesomeIcon icon={faClock} />} />
+    <div className="container p-5">
+      <div className="row gx-5 d-flex justify-content-center align-items-center mx-2">
+	  	<Contador unidad={<FontAwesomeIcon icon={faClock} style={{ fontSize: "7rem" }} />}/>
         <Contador unidad={cienMillares} />
         <Contador unidad={diezMillares} />
         <Contador unidad={millares} />
