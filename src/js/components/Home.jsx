@@ -1,13 +1,12 @@
 import React from "react";
+import Contador from "./Contador";
+import React, { useState, useEffect } from "react";
+import "../../styles/home.css";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
 	return (
 		<div>
-			
+			<Contador unidad= {unidades}/>
 		</div>
 	);
 };
