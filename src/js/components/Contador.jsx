@@ -11,7 +11,10 @@ const Contador = (props) => {
 };
 
 Contador.propTypes = {
-  unidad: PropTypes.string,
+  unidad: PropTypes.oneOfType([
+    PropTypes.string, 
+    PropTypes.node,  
+  ]),
 };
 
 Contador.defaultProps = {
