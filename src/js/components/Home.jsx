@@ -3,20 +3,35 @@ import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
-import { faStop, faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
+import { faRotateRight, faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   const [time, setTime] = useState(0);
   const [countdownTime, setCountdownTime] = useState(0);
-  const [countdownActive, setCountdownActive] = useState(false);
+  const [counterActive, setCounterActive] = useState(false);
+
+  const handlePlay = () => {
+      setCounterActive(true);
+  };
+
+  const handlePause = () => {
+    setCounterActive(false);
+};
+
+const handleReset = () => {
+  setCounterActive(false);
+  setTime(0);
+};
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime((prevTime) => prevTime + 1);
+      if (counterActive) {
+        setTime((prevTime) => prevTime + 1);        
+      }
     }, 500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [counterActive]);
 
   const unidades = time % 10;
   const decenas = Math.floor((time / 10) % 10);
@@ -61,7 +76,6 @@ const Home = () => {
               className="form-control"
               type="number"
               aria-label="With input"
-              style={{ resize: "none" }}
             />
             <button
               className="btn btn-outline-secondary"
@@ -81,7 +95,6 @@ const Home = () => {
               className="form-control"
               type="number"
               aria-label="With input"
-              style={{ resize: "none" }}
             />
             <button
               className="btn btn-outline-secondary"
@@ -101,6 +114,7 @@ const Home = () => {
               className="btn btn-outline-secondary"
               type="button"
               id="button-play"
+              onClick={handlePlay}
             >
               <FontAwesomeIcon icon={faPlay} />
             </button>
@@ -110,6 +124,7 @@ const Home = () => {
               className="btn btn-outline-secondary"
               type="button"
               id="button-pause"
+              onClick={handlePause}
             >
               <FontAwesomeIcon icon={faPause} />
             </button>
@@ -118,9 +133,10 @@ const Home = () => {
             <button
               className="btn btn-outline-secondary"
               type="button"
-              id="button-stop"
+              id="button-reset"
+              onClick={handleReset}
             >
-              <FontAwesomeIcon icon={faStop} />
+              <FontAwesomeIcon icon={faRotateRight} />
             </button>
           </div>
         </div>
