@@ -43,7 +43,7 @@ const Home = () => {
       if (counterActive) {
         if (alertTime > 0 && timeRef.current === alertTime) {
           setCounterActive(false);
-          alert("El tiempo se ha cumplido");
+          alert("Han pasado " + timeRef.current + " segundos");
           setTime((prevTime) => prevTime - 1);
         }
         setTime((prevTime) => prevTime + 1);
