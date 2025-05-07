@@ -6,17 +6,18 @@ import { faClock } from "@fortawesome/free-regular-svg-icons";
 import { faStop, faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
-  const [time, setTime] = useState(0); 
+  const [time, setTime] = useState(0);
+  const [countdownTime, setCountdownTime] = useState(0);
+  const [countdownActive, setCountdownActive] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime((prevTime) => prevTime + 1); 
+      setTime((prevTime) => prevTime + 1);
     }, 500);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
-  // Calcula las cifras individuales
   const unidades = time % 10;
   const decenas = Math.floor((time / 10) % 10);
   const centenas = Math.floor((time / 100) % 10);
@@ -56,11 +57,12 @@ const Home = () => {
       <div className="row my-4 py-4 input-group">
         <div className="col-4">
           <div className="input-group">
-            <textarea
+            <input
               className="form-control"
-              aria-label="With textarea"
+              type="number"
+              aria-label="With input"
               style={{ resize: "none" }}
-            ></textarea>
+            />
             <button
               className="btn btn-outline-secondary"
               type="button"
@@ -75,11 +77,12 @@ const Home = () => {
         </div>
         <div className="col-4">
           <div className="input-group">
-            <textarea
+            <input
               className="form-control"
-              aria-label="With textarea"
+              type="number"
+              aria-label="With input"
               style={{ resize: "none" }}
-            ></textarea>
+            />
             <button
               className="btn btn-outline-secondary"
               type="button"
@@ -92,7 +95,7 @@ const Home = () => {
             Ingresa un tiempo para iniciar cuenta regresiva
           </div>
         </div>
-        <div className="col-4 text-center aling-items-center d-flex justify-content-center">
+        <div className="col-4 text-center d-flex">
           <div className="col">
             <button
               className="btn btn-outline-secondary"
