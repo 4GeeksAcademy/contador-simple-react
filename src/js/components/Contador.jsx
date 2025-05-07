@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Contador = (props) => {
   return (
-    <div className="unity">
+    <div className="unity d-flex align-items-center justify-content-center">
       <div>{props.unidad}</div>
     </div>
   );
